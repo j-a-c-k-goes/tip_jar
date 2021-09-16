@@ -1,0 +1,138 @@
+:root {
+  --page-back: #ffffff;
+  --page-fore: #111118;
+  --page-font-size: 24px;
+
+  --section-pad: 120px;
+  --section-border: #f8f8f8;
+  --section-height: 100vh;
+
+  --form-width: 100vw;
+  --form-back: none;
+  --form-fore: #ffffff;
+  --form-border: #000000;
+
+  --black: #201918;
+  --white: #ffffff;
+}
+/* mobile friendly layout */
+@media (max-width: 640px) {
+  :root {
+    --page-font-size: 16px;
+    --section-pad: 24px;
+    --section-height: 100vw;
+    --form-width: 10vw;
+  }
+}
+
+
+body {
+	font-family: 'Space Mono', monospace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+}
+
+header{
+	position: fixed;
+	top:  28px;
+	left: 28px;
+}
+h1 {
+	font-size: 3vw;
+	font-weight: bold;
+	margin:  40px;
+}
+
+p {	margin:  20px; }
+
+form {
+	border-radius: 4px;
+	/*position: fixed;
+	bottom: 2vh;
+	left: 2vw;*/
+	border:  none;
+	background-color: var(--black);
+	/*width:  75vw;*/
+	/*height:  45vw;*/
+	max-width: var(--form-width);
+	color: var(--white);
+	padding: 24px;
+	display: grid;
+	grid-gap: 4px 4px;
+	grid-template-areas: "label label" "input eth" "button button";
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	animation: fadein 0.4s 0.8s ease-in-out both;
+}
+
+form button {
+	grid-area: button;
+	font-family: 'Space Mono', monospace;
+	font-size: 4vw;
+	background: none;
+	border: 1px solid var(--white);
+	color: var(--white);
+}
+form .has_eth {
+	display: grid;
+	animation: fadein 0.4s 0.8s ease-in-out both;
+}
+
+form label {
+	grid-area: label;
+	appearance: none;
+	/*width: 50vw;*/
+	padding: 8px;
+	text-align: center;
+	color: var(--white);
+	font-weight: bold;
+	font-size: 44px;
+	text-transform: capitalize;
+	/*border: 1px solid var(--white);*/
+	/*transition: border-color 0.2s ease-in-out;*/
+}
+
+form input {
+	grid-area: input;
+	text-align: center;
+	font-size: 24px;
+	appearance: none;
+	border: 1px solid var(--white);
+	background-color: var(--black);
+	color: var(--white);
+
+}
+
+form span {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+@keyframes fadein {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(0, 24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* for scroll snapping on larger screens */
+@supports (scroll-snap-type: y mandatory) {
+  @media (min-width: 640px) {
+    html {
+      scroll-snap-type: y mandatory;
+    }
+  
+    section {
+      scroll-snap-align: start;
+    }
+  }
+}
